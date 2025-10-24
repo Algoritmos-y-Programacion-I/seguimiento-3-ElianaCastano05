@@ -1,16 +1,13 @@
 package ui;
 
 import java.util.Scanner;
+import model.SchoolController;
 
 public class SchoolApp {
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Agregue los atributos (relaciones) necesarios para conectar esta clase con el
-     * modelo.
-     */
-
+    
     private Scanner input;
+    private SchoolController controller;
 
     public static void main(String[] args) {
 

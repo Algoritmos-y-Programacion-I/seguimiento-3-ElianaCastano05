@@ -1,25 +1,52 @@
 package model;
 
+import java.util.ArrayList;
+import java.time.LocalDate;
+
 public class Computer {
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Agregue los atributos (relaciones) necesarios para satisfacer los
-     * requerimientos.
-     */
+    //Atributos
+    private String serialNumber;
+    private boolean nextWindow;
+    private ArrayList <Incident> incidents;
 
-    public Computer() {
+    // Metodo Constructor
+    public Computer(String serialNumber, boolean nextWindow){
+        this.serialNumber = serialNumber;
+        this.nextWindow = nextWindow;
+        this.incidents = new ArrayList<Incident>();
+    }
+
+    
+    public void addIncident(LocalDate dateReport, String description){
+        
+        incidents.add(new Incident(dateReport, description));
 
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * El siguiente metodo esta incompleto.
-     * Agregue los parametros y retorno que sean pertinentes.
-     * Agregue la logica necesaria.
-     */
-    public void addIncident() {
-
+    // Getters y setters
+    public String getSerialNumber() {
+        return serialNumber;
     }
 
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public boolean getNextWindow(){
+        return nextWindow;
+    }
+
+    public void setNextWindow(boolean nextWindow) {
+        this.nextWindow = nextWindow;
+    }
+
+    public ArrayList<Incident> getIncidents() {
+        return incidents;
+    }
+
+    public void setIncidents(ArrayList<Incident> incidents) {
+        this.incidents = incidents;
+    }
+    
 }

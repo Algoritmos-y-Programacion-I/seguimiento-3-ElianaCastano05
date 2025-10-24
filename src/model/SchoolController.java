@@ -42,11 +42,16 @@ public class SchoolController {
         Computer computer = searchComputer(serialNumbrer);
 
         if(computer == null){
+            
+            for(int i = 0; i < computersMatriz.length; i++) {
 
-            computersMatriz.add(ne)
+                if(computersMatriz[floor][i] == null){
+
+                    computersMatriz[floor][i] = new Computer(serialNumbrer, nextWindow);
+                }
+            
+            }
         }
-
-
 
     }
 

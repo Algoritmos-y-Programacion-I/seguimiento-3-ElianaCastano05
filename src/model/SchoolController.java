@@ -1,20 +1,20 @@
 package model;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class SchoolController {
 
     // Atributos
     private String name;
     private int hourSpentSupport;
-    private final int FLOORS = 5;
-    private final int COLUMS = 10;
-    private final int HOURMAXSUPPORT = 100;
-    private Computer[][] computersMatriz;
+    public final int FLOORS = 5;
+    public final int COLUMNS = 10;
+    public final int HOURMAXSUPPORT = 100;
+    private Computer[][] computersMatrix;
 
     public SchoolController(String name) {
         this.name = name;
-        this.computersMatriz = new Computer[FLOORS][COLUMS];
+        this.computersMatrix = new Computer[FLOORS][COLUMNS];
 
     }
 
@@ -22,49 +22,101 @@ public class SchoolController {
        
         Computer computerFound = null;
 
-        for(int i = 0; i < computersMatriz.length; i++) {
+        for(int i = 0; i < computersMatrix.length; i++) {
 
-           for(int j = 0; j < computersMatriz.length; j++){
+            for(int j = 0; j < computersMatrix.length; j++){
 
-            if(computersMatriz[i][j].getSerialNumber().equalsIgnoreCase(serialNumber)){
+                if(computersMatrix[i][j] != null){
+                    if(computersMatrix[i][j].getSerialNumber().equalsIgnoreCase(serialNumber)){
 
-                computerFound = computersMatriz[i][j];
+                        computerFound = computersMatrix[i][j];
+                    }
+                }
             }
-           }
         }
    
         return computerFound;
     }
 
     
-    public void agregarComputador(String serialNumbrer, boolean nextWindow, int floor){
+    public String addComputer(String serialNumber, boolean nextWindow, int floor){
 
-        Computer computer = searchComputer(serialNumbrer);
+        String message = "";
+        Computer computer = searchComputer(serialNumber);
 
-        if(computer == null){
+        
+        if(computer == null && (floor >= 1 && floor <= 5)){
             
-            for(int i = 0; i < computersMatriz.length; i++) {
+            for(int i = 0; i < computersMatrix.length; i++) {
 
-                if(computersMatriz[floor][i] == null){
+                if(computersMatrix[floor-1][i] == null){ 
 
-                    computersMatriz[floor][i] = new Computer(serialNumbrer, nextWindow);
+                    computersMatrix[floor-1][i] = new Computer(serialNumber, nextWindow);
+
+                    message = "\n---> El computador ha sido agregado correctamente.";
+                    break;
                 }
+                else{
+                    message = "\n---> Error.No hay espacio para otro computador en este piso.";
+                }
+            }
+        }
+        else{
+
+            message = "\n---> Error. Ya hay un computador registrado con el mismo numero serial o el piso ingresado no existe.";
+
+        }
+
+        return message;
+    }
+
+    public String addIncidentComputer(String serialNumber, LocalDate dateReport, String description) {
+
+        String message = "";
+
+        Computer computer = searchComputer(serialNumber);
+
+        if(computer != null){
             
+            computer.addIncident(dateReport, description);
+            message = "\n---> El incidente ha sido agregado correctamente.";
+        }
+        else{
+            message = "\n---> Error. No es posible agregar un incidente porque el computador al que quiere asignarlo no existe";
+        }
+
+        return message;
+    }
+
+    public String computerMaxIncidents() {
+
+        String message = "";
+        int numIncidents = 0;
+        Computer computer, computerMaxIncidents = null;
+        int floor = 0, column = 0;
+
+        for(int i = 0; i < computersMatrix.length; i++){
+            for(int j = 0; j < computersMatrix.length; j++){
+                
+                computer = computersMatrix[i][j];
+                if(computer != null){
+                    if(computer.getIncidents().size() > numIncidents){
+
+                        numIncidents = computer.getIncidents().size();
+                        computerMaxIncidents = computer;
+                        floor = i+1;
+                        column = j+1;
+                    }
+                }
             }
         }
 
-    }
+        message += "\n---> El computador con mayor cantidad de incidentes en el edificio es:";
+        message += "\nNumero serial: " + computerMaxIncidents.getSerialNumber();
+        message += "\nUbicacion:   Piso(Fila): " + floor +  " Columna: " + column;
+        message += "\nNumero de incidentes: " + numIncidents;
 
-
-
-
-
-    public void agregarIncidenteEnComputador() {
-
-    }
-
-    public void getComputerList() {
-
+        return message;
     }
 
     // Getters y Setters
@@ -89,17 +141,20 @@ public class SchoolController {
         return FLOORS;
     }
 
-    public int getCOLUMS() {
-        return COLUMS;
+    public int getCOLUMNS() {
+        return COLUMNS;
     }
 
     public int getHOURMAXSUPPORT() {
         return HOURMAXSUPPORT;
     }
 
-    
-    
+    public Computer[][] getcomputersMatrix() {
+        return computersMatrix;
+    }
 
-
+    public void setcomputersMatrix(Computer[][] computersMatrix) {
+        this.computersMatrix = computersMatrix;
+    }
 
 }

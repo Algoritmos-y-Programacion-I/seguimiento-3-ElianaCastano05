@@ -17,7 +17,13 @@ public class Computer {
         this.incidents = new ArrayList<Incident>();
     }
 
-    
+    //Metodos
+        
+    /* --- Metodo addIncident ---
+     * Descripcion: Este metodo permite 
+     * @param LocalDate dateReport valor_nota es el valor numerico de la nota de una actividad
+     * @param String description es la retroalimentacion que da un profesor al asignar una nota a una actividad
+     */
     public void addIncident(LocalDate dateReport, String description){
         
         incidents.add(new Incident(dateReport, description));

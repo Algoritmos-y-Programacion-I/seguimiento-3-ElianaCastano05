@@ -1,5 +1,6 @@
 package ui;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 import model.SchoolController;
 
@@ -19,15 +20,10 @@ public class SchoolApp {
     // Constructor
     public SchoolApp() {
         input = new Scanner(System.in);
+        controller = new SchoolController("Computaricemos");
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * El siguiente metodo esta incompleto.
-     * Agregue la logica necesaria (instrucciones) para satisfacer los
-     * requerimientos
-     */
-
+    
     public void menu() {
 
         System.out.println("Bienvenido a Computaricemos");
@@ -42,6 +38,7 @@ public class SchoolApp {
             System.out.println("3) Consultar el computador con más incidentes");
             System.out.println("0) Salir del sistema");
             option = input.nextInt();
+            input.nextLine();
 
             switch (option) {
                 case 1:
@@ -65,22 +62,65 @@ public class SchoolApp {
 
     }
 
-    /*
-     * ATENCION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Los siguientes metodos estan incompletos.
-     * Agregue la logica necesaria (instrucciones) para satisfacer los
-     * requerimientos
-     */
-
     public void registrarComputador() {
+
+        System.out.println("\n++++++++++++ REGISTRAR COMPUTADOR ++++++++++++++"); 
+                
+        System.out.println("\nNumero serial del computador a registrar: ");
+        String serialNumber = input.nextLine();
+
+        System.out.println("\nPiso donde se ubica: ");
+        int floor = input.nextInt();
+        input.nextLine();
+
+        boolean nextWindow = true;
+        
+        String result = controller.addComputer(serialNumber, nextWindow, floor);
+
+        System.out.println(result);
 
     }
 
     public void registrarIncidenteEnComputador() {
 
+        System.out.println("\n++++++++++++ REGISTRAR INCIDENTE EN COMPUTADOR ++++++++++++++"); 
+                
+        System.out.println("\nNumero serial del computador donde se registrara el incidente: ");
+        String serialNumber = input.nextLine();
+
+         System.out.println("\nFecha del reporte: ");
+
+        System.out.println("Anio: ");
+        int anio = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Mes(en numero): ");
+        int mes = input.nextInt();
+        input.nextLine();
+
+        System.out.println("Dia: ");
+        int dia = input.nextInt();
+        input.nextLine();
+
+        LocalDate dateReport = LocalDate.of(anio, mes, dia);
+
+        System.out.println("\nDescripcion del incidente: ");
+        String description = input.nextLine();
+       
+        
+        String result = controller.addIncidentComputer(serialNumber, dateReport, description);
+
+        System.out.println(result);
+
+
     }
 
     public void consultarComputadorConMasIncidentes() {
+
+        System.out.println("\n++++++++++++ COMPUTADOR CON MAS INCIDENTES ++++++++++++++"); 
+
+        String result = controller.computerMaxIncidents();
+        System.out.println(result);
 
     }
 

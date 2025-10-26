@@ -12,12 +12,19 @@ public class SchoolController {
     public final int HOURMAXSUPPORT = 100;
     private Computer[][] computersMatrix;
 
+    // Constructor
     public SchoolController(String name) {
         this.name = name;
         this.computersMatrix = new Computer[FLOORS][COLUMNS];
-
     }
 
+    /* --- Metodo searchComputer ---
+     * Tipo de metodo: analizador 
+     * Descripcion: Este metodo permite buscar un computador dentro de computersMatrix
+     * a partir del dato recibido como parametro
+     * @param String serialNumber es el numero serial que identifica al computador que se quiere buscar
+     * @return Computer computerFound es el computador encontrado o null
+     */
     public Computer searchComputer(String serialNumber) {
        
         Computer computerFound = null;
@@ -38,7 +45,15 @@ public class SchoolController {
         return computerFound;
     }
 
-    
+    /* --- Metodo addComputer---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite añadir un computador a la matriz de 
+     * computadores de acuerdo a los datos recibidos por parametro
+     * @param String serialNumber es el numero identificador de un computador 
+     * @param boolean nextWindow atributo booleano
+     * @int floor es el piso del edificio donde se quiere añadir el computador
+     * @return String message retorna un mensaje de exito o error al añadir un computador 
+     */
     public String addComputer(String serialNumber, boolean nextWindow, int floor){
 
         String message = "";
@@ -70,6 +85,15 @@ public class SchoolController {
         return message;
     }
 
+    /* --- Metodo addIncidentComputer---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite añadir un incidente a un computador 
+     * de acuerdo a los datos recibidos por parametro
+     * @param String serialNumber es el numero identificador del computador al que se le añadira el incidente
+     * @param LocalDate dateReport fecha de reporte del incidente
+     * @param String description es la descripcion del incidente
+     * @return String message retorna un mensaje de exito o error al añadir un incidente a un computador 
+     */
     public String addIncidentComputer(String serialNumber, LocalDate dateReport, String description) {
 
         String message = "";
@@ -88,6 +112,13 @@ public class SchoolController {
         return message;
     }
 
+    /* --- Metodo computerMaxIncidents---
+     * Tipo de metodo: analizador
+     * Descripcion: Este metodo permite consultar el computador del edificio con 
+     * mayor cantidad de incidentes 
+     * @return String message retorna un mensaje mostrando el computador con mayor 
+     * cantidad de incidentes, con su ubicacion y cantidad de incidentes
+     */
     public String computerMaxIncidents() {
 
         String message = "";
@@ -125,6 +156,12 @@ public class SchoolController {
         return name;
     }
 
+    /* --- Metodo setName---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo name del objeto SchoolController 
+     * de acuerdo a lo recibido por parametro
+     * @param String name es el nombre de la escuela
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -133,6 +170,12 @@ public class SchoolController {
         return hourSpentSupport;
     }
 
+    /* --- Metodo setHourSpentSupport ---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo hourSpentSupport del objeto 
+     * SchoolController de acuerdo a lo recibido por parametro
+     * @param int hourSpentSupport son las horas gastadas en el soporte 
+     */
     public void setHourSpentSupport(int hourSpentSupport) {
         this.hourSpentSupport = hourSpentSupport;
     }
@@ -153,7 +196,13 @@ public class SchoolController {
         return computersMatrix;
     }
 
-    public void setcomputersMatrix(Computer[][] computersMatrix) {
+    /* --- Metodo setComputersMatrix---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo computersMatrix del objeto 
+     * SchoolController de acuerdo a lo recibido por parametro
+     * @param Computer[][] computersMatrix  es una matriz que contiene objetos de tipo Computer 
+     */
+    public void setComputersMatrix(Computer[][] computersMatrix) {
         this.computersMatrix = computersMatrix;
     }
 

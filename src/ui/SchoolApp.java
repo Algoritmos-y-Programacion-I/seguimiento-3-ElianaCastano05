@@ -35,7 +35,7 @@ public class SchoolApp {
             System.out.println("Digite alguna de las siguientes opciones");
             System.out.println("1) Registrar computador");
             System.out.println("2) Registrar incidente en computador");
-            System.out.println("3) Consultar el computador con más incidentes");
+            System.out.println("3) Consultar el computador con mas incidentes");
             System.out.println("0) Salir del sistema");
             option = input.nextInt();
             input.nextLine();
@@ -88,7 +88,7 @@ public class SchoolApp {
         System.out.println("\nNumero serial del computador donde se registrara el incidente: ");
         String serialNumber = input.nextLine();
 
-         System.out.println("\nFecha del reporte: ");
+        System.out.println("\nFecha del reporte: ");
 
         System.out.println("Anio: ");
         int anio = input.nextInt();

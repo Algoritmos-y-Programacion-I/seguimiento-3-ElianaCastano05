@@ -24,6 +24,12 @@ public class Incident {
         return dateReport;
     }
 
+    /* --- Metodo setDateReport---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo dateReport del objeto Incident 
+     * de acuerdo a lo recibido por parametro
+     * @param LocalDate dateReport fecha actualizada del reporte del incidente
+     */
     public void setDateReport(LocalDate dateReport){
         this.dateReport = dateReport;
     }
@@ -32,6 +38,12 @@ public class Incident {
         return description;
     }
 
+    /* --- Metodo setDescription---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo description del objeto Incident 
+     * de acuerdo a lo recibido por parametro
+     * @param String description descripcion del incidente para actualizar
+     */
     public void setDescription(String description) {
         this.description = description;
     }
@@ -40,6 +52,12 @@ public class Incident {
         return solution;
     }
 
+    /* --- Metodo setDSolution---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo solution del objeto Incident 
+     * de acuerdo a lo recibido por parametro
+     * @param boolean solution estado de solucion del incidente
+     */
     public void setSolution(boolean solution){
         this.solution = solution;
     }
@@ -48,9 +66,13 @@ public class Incident {
         return solutionHours;
     }
 
-   public void setSolutionHours(int solutionHours) {
+    /* --- Metodo setSolutionHours---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo solutionHours del objeto Incident 
+     * de acuerdo a lo recibido por parametro
+     * @param int solutionHours horas de solucion del incidente
+     */
+    public void setSolutionHours(int solutionHours) {
        this.solutionHours = solutionHours;
-   }
-
-
+    }
 }

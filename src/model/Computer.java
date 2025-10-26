@@ -20,9 +20,10 @@ public class Computer {
     //Metodos
         
     /* --- Metodo addIncident ---
-     * Descripcion: Este metodo permite 
-     * @param LocalDate dateReport valor_nota es el valor numerico de la nota de una actividad
-     * @param String description es la retroalimentacion que da un profesor al asignar una nota a una actividad
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite añadir un incidente al arreglo de incidentes de un computador
+     * @param LocalDate dateReport es la fecha de reporte del incidente
+     * @param String description es la descripcion del incidente
      */
     public void addIncident(LocalDate dateReport, String description){
         
@@ -35,6 +36,13 @@ public class Computer {
         return serialNumber;
     }
 
+
+    /* --- Metodo setSerialNumber---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo serialNumber del objeto Computer 
+     * de acuerdo a lo recibido por parametro
+     * @param String serialNumber numero serial que identifica a un computador
+     */
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
@@ -43,6 +51,12 @@ public class Computer {
         return nextWindow;
     }
 
+    /* --- Metodo setNextWindow---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo nextWindow del objeto Computer 
+     * de acuerdo a lo recibido por parametro
+     * @param boolean nextWindow parametro booleano
+     */
     public void setNextWindow(boolean nextWindow) {
         this.nextWindow = nextWindow;
     }
@@ -51,6 +65,12 @@ public class Computer {
         return incidents;
     }
 
+    /* --- Metodo setIncidents---
+     * Tipo de metodo: modificador
+     * Descripcion: Este metodo permite cambiar el estado del atributo incidents del objeto Incident 
+     * de acuerdo a lo recibido por parametro
+     * @param ArrayList<Incident> incidents es un ArrayList de incidentes 
+     */
     public void setIncidents(ArrayList<Incident> incidents) {
         this.incidents = incidents;
     }
